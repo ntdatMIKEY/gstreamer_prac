@@ -124,6 +124,7 @@ static void pad_added_handler(GstElement *src, GstPad *new_pad, CustomData *data
 	GstPad *a_sink_pad = gst_element_get_static_pad(data->audioconvert, "sink");
 			#if V_TEST
 	GstPad *v_sink_pad = gst_element_get_static_pad(data->videoconvert, "sink");
+	g_print("src = %p, new_pad = %p\na_sink_pad = %p, v_sink_pad = %p\n", src, new_pad, a_sink_pad, v_sink_pad);
 	#endif
 	GstPadLinkReturn ret;
 	GstCaps *new_pad_caps = NULL;
@@ -133,7 +134,7 @@ static void pad_added_handler(GstElement *src, GstPad *new_pad, CustomData *data
 	g_print("Received new pad '%s' from '%s':\n", GST_PAD_NAME(new_pad), GST_ELEMENT_NAME(src));
 
 	/* If our converter is already linked, we have nothing to do here */
-	if (gst_pad_is_linked(a_sink_pad) || gst_pad_is_linked(v_sink_pad))
+	if (gst_pad_is_linked(a_sink_pad) && gst_pad_is_linked(v_sink_pad))
 	{
 		g_print("We are already linked. Ignoring.\n");
 		goto exit;
