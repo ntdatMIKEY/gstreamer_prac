@@ -64,7 +64,7 @@ int main(int argc, char *argv[]) {
         if (data->seek_enabled && !data->seek_done && current > 10 * GST_SECOND) {
           g_print ("\nReached 10s, performing seek...\n");
           gst_element_seek_simple (data->playbin, GST_FORMAT_TIME,
-              GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT, 30 * GST_SECOND);
+              GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT, current + 30 * GST_SECOND);
           data->seek_done = TRUE;
         }
       }

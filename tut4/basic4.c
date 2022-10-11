@@ -4,24 +4,17 @@ char Player_init(PlayerData *data)
 {
 	g_print("data = %p\n", data);
 	data->playing = FALSE;
-	g_print("1");
   data->terminate = FALSE;
-		g_print("2");
   data->seek_enabled = FALSE;
-  	g_print("3");
 	data->seek_done = FALSE;
-  	g_print("4");
 	data->duration = GST_CLOCK_TIME_NONE;
-	g_print("5");
 	/* Create the elements */
   data->playbin = gst_element_factory_make ("playbin", "playbin");
-	g_print("6");
   if (!data->playbin) 
 	{
     g_printerr ("Not all elements could be created.\n");
     return 0;
   }
-		g_print("7");
 	return 1;
 }
 
