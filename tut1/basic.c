@@ -14,8 +14,9 @@ main (int argc, char *argv[])
   /* Build the pipeline */
   pipeline =
       gst_parse_launch
-      ("playbin uri=https://www.freedesktop.org/software/gstreamer-sdk/data/media/sintel_cropped_multilingual.webm",
+      ("playbin uri=file:///home/dat/gstreamer_prac/Vietnam.mp4",
       NULL);
+			g_print("die here");
 
   /* Start playing */
   gst_element_set_state (pipeline, GST_STATE_PLAYING);
